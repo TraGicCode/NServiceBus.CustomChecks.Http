@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>netstandard2.0;net471</TargetFrameworks>
+        <TargetFrameworks>netstandard2.0</TargetFrameworks>
         <Title>NServiceBus.CustomChecks.Http</Title>
         <PackageProjectUrl>https://github.com/TraGicCode/NServiceBus.CustomChecks.Http</PackageProjectUrl>
         <RepositoryUrl>https://github.com/TraGicCode/NServiceBus.CustomChecks.Http</RepositoryUrl>
