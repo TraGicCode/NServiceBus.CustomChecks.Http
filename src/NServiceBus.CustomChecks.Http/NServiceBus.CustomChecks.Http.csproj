@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0</TargetFrameworks>
+        <Title>NServiceBus.CustomChecks.Http</Title>
+        <PackageProjectUrl>https://github.com/TraGicCode/NServiceBus.CustomChecks.Http</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/TraGicCode/NServiceBus.CustomChecks.Http</RepositoryUrl>
+        <PackageTags>nservicebus customcheck healthcheck elastic elasticsearch</PackageTags>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <Description>A Reusable Http NServiceBus CustomCheck to check the availability and connectivity of a Remote Service.</Description>
+        <PackageIcon>icon.png</PackageIcon>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <ILRepackTargetsFile>$(SolutionDir)ILRepack.targets</ILRepackTargetsFile>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+
+    <ItemGroup>
+        <None Include="..\..\images\icon.png" Pack="true" PackagePath="\" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+        <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.2" PrivateAssets="All" />
+        <PackageReference Include="System.Net.Http" Version="4.3.4" PrivateAssets="All" />
+        <PackageReference Include="NServiceBus.CustomChecks" Version="3.0.1" />
+    </ItemGroup>
+
+
+
+</Project>
