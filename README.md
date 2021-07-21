@@ -14,7 +14,7 @@
 
 ## Description
 
-A Reusable NServiceBus CustomCheck to check the availability and connectivity of Http Endpoint.
+A Reusable NServiceBus CustomCheck to check the availability and connectivity of Http Endpoints.
 
 ## How to use it
 
