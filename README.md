@@ -1,6 +1,6 @@
 # NServiceBus.CustomChecks.Http
 
-[![Build status](https://img.shields.io/appveyor/build/TraGicCode/nservicebus-customchecks-http/master)](https://ci.appveyor.com/project/TraGicCode/nservicebus-customchecks-http)
+[![Build status](https://img.shields.io/appveyor/build/TraGicCode/NServiceBus-CustomChecks-Http/master)](https://ci.appveyor.com/project/TraGicCode/NServiceBus-CustomChecks-Http)
 [![Nuget](https://img.shields.io/nuget/v/NServiceBus.CustomChecks.Http/)](https://www.nuget.org/packages/NServiceBus.CustomChecks.Http)
 [![Nuget downloads](https://img.shields.io/nuget/dt/NServiceBus.CustomChecks.Http/)](https://www.nuget.org/packages/NServiceBus.CustomChecks.Http)
 [![License](https://img.shields.io/github/license/TraGicCode/NServiceBus.CustomChecks.Http.svg)](https://github.com/TraGicCode/NServiceBus.CustomChecks.Http/blob/master/LICENSE)
@@ -14,26 +14,26 @@
 
 ## Description
 
-A Reusable Http NServiceBus CustomCheck to check the availability and connectivity of a Remote Service.
+A Reusable NServiceBus CustomCheck to check the availability and connectivity of Http Endpoint.
 
 ## How to use it
 
-In order to begin using this custom check simply create a concrete class for each Http remote you would like to perform a healthcheck on.
+In order to begin using this custom check simply create a child class for each instance you would like to perform a healthcheck on.
 
 ```c#
-    namespace Ordering.Endpoint.CustomChecks
+namespace Ordering.Endpoint.CustomChecks
+{
+    public class GitHubHttpApiCustomCheck : HttpCustomCheck
     {
-        public class GitHubHttpApiCustomCheck : HttpCustomCheck
+        private static TimeSpan repeat = TimeSpan.FromSeconds(5);
+        private static string httpUrl = "https://api.github.com";
+        
+        public GitHubHttpApiCustomCheck(): base(url: httpUrl, id: $"Monitor {httpUrl}", "Third Party Dependency", repeat)
         {
-            private static TimeSpan repeat = TimeSpan.FromSeconds(5);
-            private static string httpUrl = "https://api.github.com";
-            
-            public GitHubHttpApiCustomCheck(): base(url: httpUrl, id: $"Monitor {httpUrl}", "Third Party Dependency", repeat)
-            {
-    
-            }
+
         }
     }
+}
 ```
 
 ## Contributing
