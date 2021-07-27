@@ -1,8 +1,8 @@
 # NServiceBus.CustomChecks.Http
 
 [![Build status](https://img.shields.io/appveyor/build/TraGicCode/NServiceBus-CustomChecks-Http/master)](https://ci.appveyor.com/project/TraGicCode/NServiceBus-CustomChecks-Http)
-[![Nuget](https://img.shields.io/nuget/v/NServiceBus.CustomChecks.Http/)](https://www.nuget.org/packages/NServiceBus.CustomChecks.Http)
-[![Nuget downloads](https://img.shields.io/nuget/dt/NServiceBus.CustomChecks.Http/)](https://www.nuget.org/packages/NServiceBus.CustomChecks.Http)
+[![Nuget](https://img.shields.io/nuget/v/NServiceBus.CustomChecks.Http)](https://www.nuget.org/packages/NServiceBus.CustomChecks.Http)
+[![Nuget downloads](https://img.shields.io/nuget/dt/NServiceBus.CustomChecks.Http)](https://www.nuget.org/packages/NServiceBus.CustomChecks.Http)
 [![License](https://img.shields.io/github/license/TraGicCode/NServiceBus.CustomChecks.Http.svg)](https://github.com/TraGicCode/NServiceBus.CustomChecks.Http/blob/master/LICENSE)
 
 #### Table of Contents
