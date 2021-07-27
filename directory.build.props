@@ -1,5 +1,5 @@
 <Project>
     <PropertyGroup>
-        <PackageTags>nservicebus;customcheck;healthcheck</PackageTags>
+        <PackageTags>nservicebus;customcheck;healthcheck;http</PackageTags>
     </PropertyGroup>
 </Project>
