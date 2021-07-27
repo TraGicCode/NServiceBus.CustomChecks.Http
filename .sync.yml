@@ -1,0 +1,4 @@
+---
+directory.build.props:
+  nuget-package-tags-extras:
+    - http
