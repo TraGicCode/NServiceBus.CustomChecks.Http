@@ -5,7 +5,6 @@
         <Title>NServiceBus.CustomChecks.Http</Title>
         <PackageProjectUrl>https://github.com/TraGicCode/NServiceBus.CustomChecks.Http</PackageProjectUrl>
         <RepositoryUrl>https://github.com/TraGicCode/NServiceBus.CustomChecks.Http</RepositoryUrl>
-        <PackageTags>nservicebus customcheck healthcheck elastic elasticsearch</PackageTags>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
         <Description>A Reusable Http NServiceBus CustomCheck to check the availability and connectivity of a Remote Service.</Description>
         <PackageIcon>icon.png</PackageIcon>
