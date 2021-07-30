@@ -10,7 +10,7 @@
 1. [Description](#description)
 1. [How to use it](#how-to-use-it)
 1. [How it works](#how-it-works)
-1. [Development - Guide for contributing to the module](#contributing)
+1. [Development - Guide for contributing](#contributing)
 
 ## Description
 
