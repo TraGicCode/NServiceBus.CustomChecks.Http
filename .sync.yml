@@ -1,4 +1,20 @@
 ---
+README.md:
+  description_suffix: Http Endpoints
+  usage_code_block: |-
+    namespace Ordering.Endpoint.CustomChecks
+    {
+        public class GitHubHttpApiCustomCheck : HttpCustomCheck
+        {
+            private static TimeSpan repeat = TimeSpan.FromSeconds(5);
+            private static string httpUrl = "https://api.github.com";
+            
+            public GitHubHttpApiCustomCheck(): base(url: httpUrl, id: $"Monitor {httpUrl}", "Third Party Dependency", repeat)
+            {
+    
+            }
+        }
+    }
 directory.build.props:
   nuget-package-tags-extras:
     - http
