@@ -4,7 +4,6 @@
         <TargetFrameworks>netstandard2.0</TargetFrameworks>
         <Description>A Reusable Http NServiceBus CustomCheck to check the availability and connectivity of a Remote Service.</Description>
         <PackageIcon>icon.png</PackageIcon>
-        <ILRepackTargetsFile>$(SolutionDir)ILRepack.targets</ILRepackTargetsFile>
     </PropertyGroup>
 
 
