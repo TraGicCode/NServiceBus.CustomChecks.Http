@@ -13,7 +13,7 @@
 
     <!-- ILRepack Target -->
     <PropertyGroup>
-        <ILRepackTargetsFile>$(SolutionDir)..\directory.build.props</ILRepackTargetsFile>
+        <ILRepackTargetsFile>$(SolutionDir)directory.build.props</ILRepackTargetsFile>
     </PropertyGroup>
     <Target Name="ILRepacker" AfterTargets="Build" Condition="'$(Configuration)' == 'Release' And '$(MSBuildProjectName)' == '@metadata[:module_name]'">
 
