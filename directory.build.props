@@ -13,7 +13,7 @@
 
     <!-- ILRepack Target -->
     <PropertyGroup>
-        <ILRepackTargetsFile>$(SolutionDir)directory.build.targets</ILRepackTargetsFile>
+        <ILRepackTargetsFile>$(SolutionDir)ILRepack.targets</ILRepackTargetsFile>
     </PropertyGroup>
 
 </Project>
