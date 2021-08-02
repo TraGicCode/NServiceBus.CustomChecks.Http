@@ -11,4 +11,9 @@
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies> <!-- Ensure nuget dependencies make it to bin directory for il-repack -->
     </PropertyGroup>
 
+    <!-- ILRepack Target -->
+    <PropertyGroup>
+        <ILRepackTargetsFile>$(SolutionDir)directory.build.targets</ILRepackTargetsFile>
+    </PropertyGroup>
+
 </Project>
