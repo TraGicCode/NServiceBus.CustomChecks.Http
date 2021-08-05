@@ -15,6 +15,6 @@ README.md:
             }
         }
     }
-directory.build.props:
+Directory.Build.props:
   nuget-package-tags-extras:
     - http
