@@ -1,0 +1,12 @@
+<Project>    
+
+    <!-- ILRepack Info -->
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies> 
+        <ILRepackTargetsFile>$(SolutionDir)ILRepack.targets</ILRepackTargetsFile>
+    </PropertyGroup>
+
+
+    <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" Condition="Exists($([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../')))"/>
+</Project>
