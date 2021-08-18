@@ -2,7 +2,8 @@
 
     <!-- Nuget Package Info -->
     <PropertyGroup>
-        <Title>NServiceBus.CustomChecks.Http</Title>
+        <PackageId>NServiceBus.CustomChecks.Http</PackageId>
+        <Authors>TraGicCode</Authors>
         <PackageProjectUrl>https://github.com/TraGicCode/NServiceBus.CustomChecks.Http</PackageProjectUrl>
         <RepositoryUrl>https://github.com/TraGicCode/NServiceBus.CustomChecks.Http</RepositoryUrl>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
