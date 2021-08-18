@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.1](https://github.com/tragiccode/NServiceBus.CustomChecks.Http/tree/0.2.1) (2021-08-18)
+
+[Full Changelog](https://github.com/tragiccode/NServiceBus.CustomChecks.Http/compare/0.2.0...0.2.1)
+
+### Bugs
+
+- Add Author to nuget package metadata [\#22](https://github.com/TraGicCode/NServiceBus.CustomChecks.Http/pull/22) ([TraGicCode](https://github.com/TraGicCode))
+
 ## [0.2.0](https://github.com/tragiccode/NServiceBus.CustomChecks.Http/tree/0.2.0) (2021-07-27)
 
 [Full Changelog](https://github.com/tragiccode/NServiceBus.CustomChecks.Http/compare/0.1.0...0.2.0)
