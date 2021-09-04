@@ -1,10 +1,12 @@
 <Project>
+    <!-- Cannot embed README.md until https://github.com/NuGet/Home/issues/10791 is fixed for symbol packages
     <PropertyGroup>
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
     <ItemGroup>
         <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
+    -->
 
     <!-- ILRepack Info -->
     <PropertyGroup Condition="'$(Configuration)' == 'Release'">
