@@ -8,16 +8,6 @@
         <RepositoryUrl>https://github.com/TraGicCode/NServiceBus.CustomChecks.Http</RepositoryUrl>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
         <PackageTags>nservicebus;customcheck;healthcheck;http</PackageTags>
-        <!-- SourceLink -->
-        <PublishRepositoryUrl>true</PublishRepositoryUrl>
-        <EmbedUntrackedSources>true</EmbedUntrackedSources>
-        <IncludeSymbols>true</IncludeSymbols>
-        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
-
-    <!-- SourceLink -->
-    <ItemGroup>
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
-    </ItemGroup>
 
 </Project>
