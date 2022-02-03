@@ -3,9 +3,24 @@ name: Pull Request Checks
 on: [pull_request]
 
 jobs:
-  build:
+  get-version:
     # Environment
-    # runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }} # needed for 'codacy/git-version'
+          fetch-depth: 0 # needed for 'codacy/git-version'
+
+      - name: Generate Version Number
+        uses: codacy/git-version@2.2.0
+        id: gitversion
+
+    outputs:
+      version: ${{ steps.gitversion.outputs.version  }}
+  build:
     runs-on: windows-latest
     strategy:
       matrix:
@@ -14,9 +29,6 @@ jobs:
     steps:
       - name: Git Checkout
         uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }} # needed for 'codacy/git-version'
-          fetch-depth: 0 # needed for 'codacy/git-version'
 
       - name: Generate Version Number
         uses: codacy/git-version@2.2.0
@@ -35,4 +47,4 @@ jobs:
         uses: microsoft/setup-msbuild@v1.1
 
       - name: Run MSBuild
-        run: msbuild /property:Configuration=Release /p:Version=${{steps.gitversion.outputs.version}}
+        run: msbuild /property:Configuration=Release /p:Version=${{ needs.get-version.outputs.version }}
