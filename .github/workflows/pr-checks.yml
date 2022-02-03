@@ -1,0 +1,34 @@
+name: Pull Request Checks
+
+on: [pull_request]
+
+jobs:
+  build:
+    # Environment
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: ['3.0', '3.1.x', '5.0.x', 6.0.x']
+
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v2
+
+      - name: Generate Version Number
+        uses: codacy/git-version@2
+        id: gitversion
+
+      - name: Setup .NET Core SDK  ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+
+      - name: Restore Nuget Packages
+        run: dotnet restore
+
+      # Build
+      - name: Add MSBuild to PATH
+        uses: microsoft/setup-msbuild@v1.1
+
+      - name: Run MSBuild
+        run: msbuild /property:Configuration=Release /p:Version=${{steps.gitversion.outputs.version}}
