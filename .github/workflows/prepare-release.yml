@@ -87,7 +87,7 @@ jobs:
           git config --local user.email "${{ github.repository_owner }}@users.noreply.github.com"
           git config --local user.name "GitHub Action"
           git add .
-          git commit -m "Release prep v${{ steps.gv.outputs.ver }}"
+          git commit -m "Release prep v${{ needs.get-version.outputs.version }}"
 
       # Create pull request and push
       # investigate if i want to use this
@@ -98,10 +98,10 @@ jobs:
         if: ${{ github.repository_owner == 'TraGicCode' }}
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "Release prep v${{ steps.gv.outputs.ver }}"
+          commit-message: "Release prep v${{ needs.get-version.outputs.version }}"
           branch: "release-prep"
           delete-branch: true
-          title: "Release prep v${{ steps.gv.outputs.ver }}"
+          title: "Release prep v${{ needs.get-version.outputs.version }}"
           body: |
             Automated release-prep through [pdk-templates](https://github.com/puppetlabs/pdk-templates/blob/main/moduleroot/.github/workflows/auto_release.yml.erb) from commit ${{ github.sha }}. 
             Please verify before merging:
