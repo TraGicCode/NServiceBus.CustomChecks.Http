@@ -23,7 +23,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           excludeLabels: 'maintenance'
-          headerLabel: '# mdbook-bib Changelog Pre-release'
           pullRequests: true
           author: true
           prWoLabels: true
