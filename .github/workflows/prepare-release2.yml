@@ -42,11 +42,11 @@ jobs:
           text: ${{ steps.update-release-changelog.outputs.changelog }}
 
       - name: Echo New Release Version
-        run: echo "New Release Version is ${{ steps.regex-match.outputs.group1 }}"
+        run: echo "New Release Version is ${{ steps.extract-release-version.outputs.group1 }}"
 
     outputs:
       changelog: ${{ steps.update-release-changelog.outputs.changelog }}
-      version: ${{ steps.regex-match.outputs.group1 }}
+      version: ${{ steps.extract-release-version.outputs.group1 }}
 
   build:
     needs: [ get-version ]
