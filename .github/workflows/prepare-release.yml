@@ -15,11 +15,25 @@ jobs:
           ref: ${{ github.head_ref }} # needed for 'codacy/git-version'
           fetch-depth: 0 # needed for 'codacy/git-version'
 
+      # config.merge_prefix = "### UNCATEGORIZED PRS; LABEL THEM ON GITHUB"
+      # Cool changelog https://github.com/liqotech/liqo/blob/529c90a589869f5606507bf9390913fc62afc5d6/.github/workflows/integration.yml
       - name: "Update Release CHANGELOG"
         id: update-release-changelog
         uses: heinrichreimer/github-changelog-generator-action@v2.2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          excludeLabels: 'maintenance'
+          headerLabel: '# Change log\n\nAll notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).'
+          prWoLabels: true
+          issues: false
+          verbose: true
+          prLabel: '### UNCATEGORIZED PRS; LABEL THEM ON GITHUB'
+          configureSections: '{
+              "Changed": {"labels": ["kind/breaking"], "prefix": "### :boom: Breaking Change"},
+              "Added": {"labels": ["kind/feature","kind/epic"], "prefix": "### :rocket: New Features"},
+              "Fixed": {"labels": ["kind/bug"], "prefix": "### :bug: Bug Fixes"},
+            }'
+
           onlyLastTag: false
           stripHeaders: false
           base: "CHANGELOG.md"
