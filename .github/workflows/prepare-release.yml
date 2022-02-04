@@ -34,21 +34,6 @@ jobs:
               "Fixed": {"labels": ["kind/bug"], "prefix": "### :bug: Bug Fixes"},
             }'
 
-          onlyLastTag: false
-          stripHeaders: false
-          base: "CHANGELOG.md"
-          headerLabel: "# Changelog"
-          breakingLabel: '### Breaking'
-          enhancementLabel: '### Enhancements'
-          stripGeneratorNotice: true
-          bugsLabel: '### Fixes'
-          issues: true
-          issuesWoLabels: true
-          pullRequests: true
-          prWoLabels: true
-          author: false
-          verbose: true
-
       - name: Extract New Release Version
         id: extract-release-version
         uses: actions-ecosystem/action-regex-match@v2
