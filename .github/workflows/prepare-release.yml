@@ -1,6 +1,7 @@
-name: Pull Request Checks
+name: Prepare Release
 
-on: [pull_request]
+on:
+  workflow_dispatch:
 
 jobs:
   get-version:
@@ -14,12 +15,40 @@ jobs:
           ref: ${{ github.head_ref }} # needed for 'codacy/git-version'
           fetch-depth: 0 # needed for 'codacy/git-version'
 
-      - name: Generate Version Number
-        uses: codacy/git-version@2.2.0
-        id: gitversion
+      - name: "Update Release CHANGELOG"
+        id: update-release-changelog
+        uses: heinrichreimer/github-changelog-generator-action@v2.2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          onlyLastTag: false
+          stripHeaders: false
+          base: "CHANGELOG.md"
+          headerLabel: "# Changelog"
+          breakingLabel: '### Breaking'
+          enhancementLabel: '### Enhancements'
+          stripGeneratorNotice: true
+          bugsLabel: '### Fixes'
+          issues: true
+          issuesWoLabels: true
+          pullRequests: true
+          prWoLabels: true
+          author: false
+          verbose: true
+
+      - name: Extract New Release Version
+        id: extract-release-version
+        uses: actions-ecosystem/action-regex-match@v2
+        with:
+          regex: '## \[(?<version>.+?)\]'
+          text: ${{ steps.update-release-changelog.outputs.changelog }}
+
+      - name: Echo New Release Version
+        run: echo "New Release Version is ${{ steps.extract-release-version.outputs.group1 }}"
 
     outputs:
-      version: ${{ steps.gitversion.outputs.version  }}
+      changelog: ${{ steps.update-release-changelog.outputs.changelog }}
+      version: ${{ steps.extract-release-version.outputs.group1 }}
+
   build:
     needs: [ get-version ]
     runs-on: windows-latest
@@ -77,8 +106,8 @@ jobs:
             - [ ] Ensure the [changelog](https://github.com/${{ github.repository }}/blob/release-prep/CHANGELOG.md) version and [metadata](https://github.com/${{ github.repository }}/blob/release-prep/metadata.json) version match
           labels: "maintenance"
 
-    - name: PR outputs
-      if: ${{ github.repository_owner == 'TraGicCode' }}
-      run: |
-        echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
-        echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+      - name: PR outputs
+        if: ${{ github.repository_owner == 'TraGicCode' }}
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
