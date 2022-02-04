@@ -36,18 +36,17 @@ jobs:
 
       - name: Extract New Release Version
         id: extract-release-version
-        uses: AsasInnab/regex-action@v1
+        uses: actions-ecosystem/action-regex-match@v2
         with:
-          regex_pattern: '## \[(?<version>.+?)\]'
-          regex_flags: 'gim'
-          search_string: ${{ steps.update-release-changelog.outputs.changelog }}
+          regex: '## \[(?<version>.+?)\]'
+          text: ${{ steps.update-release-changelog.outputs.changelog }}
 
       - name: Echo New Release Version
-        run: echo "New Release Version is ${{ steps.extract-release-version.outputs.first_match }}"
+        run: echo "New Release Version is ${{ steps.regex-match.outputs.group1 }}"
 
     outputs:
       changelog: ${{ steps.update-release-changelog.outputs.changelog }}
-      version: ${{ steps.extract-release-version.outputs.first_match }}
+      version: ${{ steps.regex-match.outputs.group1 }}
 
   build:
     needs: [ get-version ]
