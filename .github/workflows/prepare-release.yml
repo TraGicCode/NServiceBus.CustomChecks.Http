@@ -23,7 +23,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           excludeLabels: 'maintenance'
-          headerLabel: 'sssChange log'
+          headerLabel: "# Change log  s"
           pullRequests: true
           author: true
           prWoLabels: true
