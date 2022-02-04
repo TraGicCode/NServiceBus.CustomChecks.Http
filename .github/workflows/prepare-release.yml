@@ -23,6 +23,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           excludeLabels: 'maintenance'
+          compareLink: true
           pullRequests: true
           author: true
           prWoLabels: true
