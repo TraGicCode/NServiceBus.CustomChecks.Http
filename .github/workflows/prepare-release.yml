@@ -76,6 +76,10 @@ jobs:
         run: msbuild /property:Configuration=Release /p:Version=${{ needs.get-version.outputs.version }}
 
       # Generate changelog
+      - name: "Create CHANGELOG.md"
+        shell: pwsh
+        run: ${{ steps.update-release-changelog.outputs.changelog }} | Out-File -FilePath .\CHANGELOG.md
+
       # Commit changelog
       - name: "Commit changes"
         if: ${{ github.repository_owner == 'TraGicCode' }} # investigate this for security concerns and learning
