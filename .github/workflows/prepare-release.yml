@@ -78,7 +78,7 @@ jobs:
       # Generate changelog
       - name: "Create CHANGELOG.md"
         shell: pwsh
-        run: "${{ needs.get-version.outputs.changelog }}" | Out-File -FilePath .\CHANGELOG.md
+        run: '"${{ needs.get-version.outputs.changelog }}" | Out-File -FilePath .\CHANGELOG.md'
 
       # Commit changelog
       - name: "Commit changes"
