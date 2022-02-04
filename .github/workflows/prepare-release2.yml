@@ -45,6 +45,10 @@ jobs:
       - name: Echo New Release Version
         run: echo "New Release Version is ${{ steps.extract-release-version.outputs.first_match }}"
 
+    outputs:
+      changelog: ${{ steps.update-release-changelog.outputs.changelog }}
+      version: ${{ steps.extract-release-version.outputs.first_match }}
+
   build:
     needs: [ get-version ]
     runs-on: windows-latest
@@ -102,8 +106,8 @@ jobs:
             - [ ] Ensure the [changelog](https://github.com/${{ github.repository }}/blob/release-prep/CHANGELOG.md) version and [metadata](https://github.com/${{ github.repository }}/blob/release-prep/metadata.json) version match
           labels: "maintenance"
 
-    - name: PR outputs
-      if: ${{ github.repository_owner == 'TraGicCode' }}
-      run: |
-        echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
-        echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+      - name: PR outputs
+        if: ${{ github.repository_owner == 'TraGicCode' }}
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
