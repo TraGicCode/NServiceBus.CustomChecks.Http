@@ -29,9 +29,11 @@ jobs:
           verbose: true
           prLabel: '### UNCATEGORIZED PRS; LABEL THEM ON GITHUB'
           configureSections: '{
-              "Changed": {"labels": ["kind/breaking"], "prefix": "### :boom: Breaking Change"},
-              "Added": {"labels": ["kind/feature","kind/epic"], "prefix": "### :rocket: New Features"},
-              "Fixed": {"labels": ["kind/bug"], "prefix": "### :bug: Bug Fixes"},
+              "breaking": {"labels": ["kind/breaking"], "prefix": "### :boom: Breaking Change"},
+              "feature": {"labels": ["kind/feature","kind/epic"], "prefix": "### :rocket: New Features"},
+              "bug": {"labels": ["kind/bug"], "prefix": "### :bug: Bug Fixes"},
+              "cleanup": {"labels": ["kind/cleanup"], "prefix": "### :broom: Code Refactoring"},
+              "docs": {"labels": ["kind/docs"], "prefix": "### :memo: Documentation"}
             }'
 
       - name: Extract New Release Version
