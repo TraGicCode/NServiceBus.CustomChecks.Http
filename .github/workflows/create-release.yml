@@ -8,8 +8,8 @@ jobs:
     name: Build, Pack & Publish
     runs-on: windows-latest
     strategy:
-    matrix:
-      dotnet-version: ['6.0.x']
+      matrix:
+        dotnet-version: ['6.0.x']
 
     steps:
       - name: Git Checkout
@@ -20,15 +20,16 @@ jobs:
         uses: juliangruber/read-file-action@v1
         with:
           path: ./CHANGELOG.md
-      - name: Echo package.json
-        run: echo "${{ steps.package.outputs.content }}"
+
+      - name: Echo CHANGELOG.md
+        run: echo "${{ steps.changelog.outputs.content }}"
 
       - name: Extract New Release Version
         id: extract-release-version
         uses: actions-ecosystem/action-regex-match@v2
         with:
           regex: '## \[(?<version>.+?)\]'
-          text: ${{ steps.package.outputs.content }}
+          text: ${{ steps.changelog.outputs.content }}
 
       - name: Echo New Release Version
         run: echo "New Release Version is ${{ steps.extract-release-version.outputs.group1 }}"
