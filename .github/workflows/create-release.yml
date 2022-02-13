@@ -51,7 +51,7 @@ jobs:
 
       - name: Publish NuGet package to NuGet Gallery
         run: |
-          dotnet nuget push ./src/NServiceBus.CustomChecks.Http./bin/Release/NServiceBus.CustomChecks.Http.*nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate --api-key ${{secrets.NUGET_API_KEY}}
+          dotnet nuget push ./src/NServiceBus.CustomChecks.Http/bin/Release/NServiceBus.CustomChecks.Http.*nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate --api-key ${{secrets.NUGET_API_KEY}}
 
       - name: Create release
         uses: actions/create-release@v1
