@@ -28,11 +28,13 @@ jobs:
         id: extract-release-version
         uses: actions-ecosystem/action-regex-match@v2
         with:
-          regex: '## \[(?<version>.+?)\]'
+          regex: '(?<changelog>## \[(?<version>.+?)\].*?)## \['
           text: ${{ steps.changelog.outputs.content }}
 
-      - name: Echo New Release Version
-        run: echo "New Release Version is ${{ steps.extract-release-version.outputs.group1 }}"
+      - name: Echo New Release Version and ChangeLog
+        run: | 
+          echo "New Release ChangeLog is ${{ steps.extract-release-version.outputs.group1 }}"
+          echo "New Release Version is ${{ steps.extract-release-version.outputs.group2 }}"
 
       - name: Setup .NET Core SDK  ${{ matrix.dotnet-version }}
         uses: actions/setup-dotnet@v1
@@ -47,18 +49,20 @@ jobs:
         uses: microsoft/setup-msbuild@v1.1
 
       - name: Run MSBuild
-        run: msbuild /property:Configuration=Release /p:Version=${{ steps.extract-release-version.outputs.group1 }}
+        run: msbuild /property:Configuration=Release /p:Version=${{ steps.extract-release-version.outputs.group2 }}
 
       - name: Publish NuGet package to NuGet Gallery
         run: |
-          dotnet nuget push ./src/NServiceBus.CustomChecks.Http/bin/Release/netstandard2.0/NServiceBus.CustomChecks.Http.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate --api-key ${{secrets.NUGET_API_KEY}}
+          dotnet nuget push .\src\NServiceBus.CustomChecks.Http\bin\Release\*.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate --api-key ${{secrets.NUGET_API_KEY}}
 
       - name: Create release
         uses: actions/create-release@v1
         id: create_release
         with:
-          tag_name: ${{ steps.extract-release-version.outputs.group1 }}
+          tag_name: ${{ steps.extract-release-version.outputs.group2 }}
           prerelease: false
           draft: false
+          body: |
+            ${{ steps.extract-release-version.outputs.group1 }}
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
