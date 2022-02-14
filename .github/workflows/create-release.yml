@@ -30,6 +30,7 @@ jobs:
         with:
           regex: '(?<changelog>## \[(?<version>.+?)\].*?)## \['
           text: ${{ steps.changelog.outputs.content }}
+          flags: s
 
       - name: Echo New Release Version and ChangeLog
         run: | 
