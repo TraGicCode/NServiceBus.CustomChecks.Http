@@ -97,7 +97,7 @@ jobs:
       # Check 
       - name: Create Pull Request
         id: cpr
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v4.0.1
         if: ${{ github.repository_owner == 'TraGicCode' }}
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
