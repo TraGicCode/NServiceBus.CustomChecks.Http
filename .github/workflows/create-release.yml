@@ -38,7 +38,7 @@ jobs:
           echo "New Release Version is ${{ steps.extract-release-version.outputs.group2 }}"
 
       - name: Setup .NET Core SDK  ${{ matrix.dotnet-version }}
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v2.1.1
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
 
