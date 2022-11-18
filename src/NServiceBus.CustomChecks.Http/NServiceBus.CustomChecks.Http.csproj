@@ -15,7 +15,7 @@
     <ItemGroup>
         <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.2" PrivateAssets="All" />
         <PackageReference Include="System.Net.Http" Version="4.3.4" PrivateAssets="All" />
-        <PackageReference Include="NServiceBus.CustomChecks" Version="3.0.1" />
+        <PackageReference Include="NServiceBus.CustomChecks" Version="4.0.0" />
     </ItemGroup>
 
 
