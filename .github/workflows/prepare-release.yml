@@ -73,7 +73,7 @@ jobs:
 
       # Build
       - name: Add MSBuild to PATH
-        uses: microsoft/setup-msbuild@v1.1
+        uses: microsoft/setup-msbuild@v1.3
 
       - name: Run MSBuild
         run: msbuild /property:Configuration=Release /p:Version=${{ needs.get-version.outputs.version }}
